@@ -216,3 +216,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+WikiSQL/
+*_pairs.jsonl
+spm_corpus.txt
+*.pt
+*.pth
+checkpoints/
+
+venv/
