@@ -103,7 +103,6 @@ The raw output is in `results/checks_output.txt`. The 0.51% gold round-trip mism
 
 ![Cross-attention map](results/attention_map.png)
 
-_Add one or two sentences about whether the generated column tokens attend to the matching column in the source._
 
 ## Qualitative samples
 
