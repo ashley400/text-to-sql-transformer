@@ -31,6 +31,27 @@ class EncoderLayer(nn.Module):
         x= self.normalization2(x+ self.dropout(ffn))
         return x
 
+class DecoderLayer(nn.Module):
+    def __init__(self, d_model=256, h=4, d_ff=1024, dropout=0.1):
+        super().__init__()
+        self.self_attention=MultiHeadAttention(d_model,h)
+        self.cross_attention=MultiHeadAttention(d_model,h)
+        self.feedforwardnet=PositionwiseFeedForward(d_model,d_ff)
+        self.normalization1=nn.LayerNorm(d_model)
+        self.normalization2=nn.LayerNorm(d_model)
+        self.normalization3=nn.LayerNorm(d_model)
+        self.dropout=nn.Dropout(dropout)
+        self.cross_weights=None
+
+    def forward(self,x,encoder_output,source_mask,target_mask):
+        output,_=self.self_attention(x,x,x,target_mask)
+        x=self.normalization1(x+self.dropout(output))
+        output,weights=self.cross_attention(x,encoder_output,encoder_output,source_mask)
+        self.cross_weights=weights
+        x=self.normalization2(x+self.dropout(output))
+        ffn=self.feedforwardnet(x)
+        x=self.normalization3(x+self.dropout(ffn))
+        return x
 
 class Encoder(nn.Module):
     def __init__(self, N=3,d_model=256,h=4,d_ff=1024,dropout=0.1):
@@ -40,4 +61,13 @@ class Encoder(nn.Module):
     def forward(self, x,mask):
         for layer in self.layers:
             x =layer(x,mask)
+        return x
+
+class Decoder(nn.Module):
+    def __init__(self, N=3,d_model=256,h=4,d_ff=1024,dropout=0.1):
+        super().__init__()
+        self.layers = nn.ModuleList([DecoderLayer(d_model, h,d_ff,dropout) for _ in range(N)])
+    def forward(self, x,encoder_output,source_mask,target_mask):
+        for layer in self.layers:
+            x =layer(x,encoder_output,source_mask,target_mask)
         return x
