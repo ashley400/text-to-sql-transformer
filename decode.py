@@ -6,6 +6,9 @@ import torch
 import torch.nn.functional as F
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "starter")))
 from data_prep import AGG_OPS, COND_OPS, encode_source, encode_target, load_split
+from pathlib import Path
+import data_prep
+data_prep.DATA_DIR = Path(__file__).resolve().parent / "starter" / "WikiSQL" / "data"
 
 PAD_ID, BOS_ID, EOS_ID = 0, 2, 3
 MAX_TARGET_LEN = 64

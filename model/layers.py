@@ -47,7 +47,7 @@ class DecoderLayer(nn.Module):
         output,_=self.self_attention(x,x,x,target_mask)
         x=self.normalization1(x+self.dropout(output))
         output,weights=self.cross_attention(x,encoder_output,encoder_output,source_mask)
-        weights.detach()
+        self.cross_weights=weights.detach()
         x=self.normalization2(x+self.dropout(output))
         ffn=self.feedforwardnet(x)
         x=self.normalization3(x+self.dropout(ffn))
