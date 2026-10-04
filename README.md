@@ -18,6 +18,7 @@ An English question plus the column names of one table goes in, and a SQL query 
 - Decoding: greedy, beam search, parser, readable SQL (Task 4)
 - Evaluation: prediction files, component accuracy, samples, attention map (Task 5)
 - Front end (Task 6)
+- Results tables, README and blog
 
 ## How to run
 
