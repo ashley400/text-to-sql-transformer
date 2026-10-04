@@ -1,0 +1,7 @@
+﻿1. weight sharing (same tensor): PASS
+2. trainable parameters: 7577600
+3. causal mask: earlier positions unchanged: PASS
+   last position did change: PASS
+4. padding mask: output unchanged with extra <pad>: PASS
+5. attention row sums: min 1.000000, max 1.000000
+   max weight on <pad> positions: 0.00e+00
