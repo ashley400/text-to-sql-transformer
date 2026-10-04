@@ -8,12 +8,13 @@ An English question plus the column names of one table goes in, and a SQL query 
 
 **Ayesha Tariq** (GitHub: ashley400)
 - Data statistics and positional-encoding heat-map (Task 1)
+- Transformer model: attention, layers (Task 2)
 - Training: loss, optimiser, learning-rate schedule, checkpointing (Task 3)
 - Correctness checks, loss and learning-rate plots
 - Results tables, README and blog
 
 **Muhammad Momin Nadeem**
-- Transformer model: attention, layers, masks, full model (Task 2)
+- Transformer model: layers, masks, full model (Task 2)
 - Decoding: greedy, beam search, parser, readable SQL (Task 4)
 - Evaluation: prediction files, component accuracy, samples, attention map (Task 5)
 - Front end (Task 6)
