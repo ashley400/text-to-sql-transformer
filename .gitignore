@@ -224,4 +224,4 @@ spm_corpus.txt
 *.pth
 checkpoints/
 
-venv/
+venv/.gradio/
