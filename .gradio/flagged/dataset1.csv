@@ -1,0 +1,2 @@
+Question,Column names (comma-separated),Decoding,Generated SQL,Raw model output,timestamp
+How many employees work in Lahore?,"Name,Department,Salary,City,Age",beam,SELECT Age FROM table WHERE City = 'lahore',select <c4> where <c3> = lahore,2026-10-05 13:28:42.159657
